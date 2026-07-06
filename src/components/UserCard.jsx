@@ -36,9 +36,9 @@ const UserCard = ({ user }) => {
 };
 
   return (
-      <div className="card bg-base-300 w-90 shadow-xl rounded-xl">
+      <div className="card bg-base-300 w-[95%] sm:w-96 shadow-xl rounded-xl mx-auto">
       <figure>
-        <img src={photourl} alt={firstName} className="w-full h-68 object-cover"/>
+        <img src={photourl} alt={firstName} className="w-full h-64 sm:h-72 object-cover"/>
       </figure>
 
       <div className="card-body">
@@ -60,16 +60,16 @@ const UserCard = ({ user }) => {
       ))}
     </div>
 
-        <div className="card-actions justify-center">
+      <div className="card-actions flex-col sm:flex-row fixed-left-0 w-full">
       <button
-  className="btn btn-error"
+  className="btn btn-error w-full sm:w-auto"
   onClick={() => handleSendRequest("ignored", _id)}
 >
   Ignore
 </button>
 
 <button
-  className="btn btn-success"
+  className="btn btn-success w-full sm:w-auto"
   onClick={() => handleSendRequest("interested", _id)}
 >
   Interested

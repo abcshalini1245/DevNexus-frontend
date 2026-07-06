@@ -112,16 +112,31 @@ const Connections = () => {
 
           return (
             <div
-              key={_id}
-              className="flex w-2/4 bg-base-300 rounded-xl shadow-md p-2 items-center gap-3"
-            >
+  key={_id}
+  className="
+    w-[95%]
+    md:w-2/4
+    bg-base-300
+    rounded-xl
+    shadow-md
+    p-5
+    flex
+    flex-col
+    md:flex-row
+    items-center
+    md:items-center
+    text-center
+    md:text-left
+    gap-4
+  "
+>
               <img
                 src={photourl}
                 alt={firstName}
-                className="w-24 h-24 rounded-full object-cover"
+                className="w-28 h-28 md:w-24 md:h-24 rounded-full object-cover"
               />
 
-              <div>
+              <div className="flex-1 w-full">
                 <h2 className="text-m font-bold">
                   {firstName} {lastName}
                 </h2>
@@ -132,7 +147,7 @@ const Connections = () => {
 
                 <p className="mt-1 line-clamp-2">{about}</p>
               <Link to={`/profile/${_id}`}>
-  <button className="btn btn-primary mt-2">
+  <button className="btn btn-primary mt-4 w-full md:w-fit">
     View Profile
   </button>
 </Link>

@@ -21,7 +21,7 @@ const EditProfile = ({ user }) => {
   const [gender, setGender] = useState(user?.gender || "");
   const [about, setAbout] = useState(user?.about || "");
   const [skills, setSkills] = useState(user?.skills || []);
-  const [photourl, setPhoto] = useState(user?.photourl || "");
+  
 
   const [location, setLocation] = useState(user?.location || "");
   const [education, setEducation] = useState(user?.education || "");
@@ -35,6 +35,9 @@ const EditProfile = ({ user }) => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
+  const [file, setFile] = useState(null);
+const [photourl, setPhotoUrl] = useState(user.photourl || "");
+const [previewImage, setPreviewImage] = useState(user?.photourl || "");
 
   const dispatch = useDispatch();
 
@@ -52,7 +55,9 @@ const EditProfile = ({ user }) => {
     setGender(user.gender || "");
     setAbout(user.about || "");
     setSkills(user.skills || []);
-    setPhoto(user.photourl || "");
+    setPhotoUrl(user.photourl|| "");
+   
+setPreviewImage(user.photourl || "");
 
     setLocation(user.location || "");
     setEducation(user.education || "");
@@ -62,20 +67,53 @@ const EditProfile = ({ user }) => {
     setGithub(user.github || "");
     setLinkedin(user.linkedin || "");
     setPortfolio(user.portfolio || "");
+    
 
   }, [user]);
 
   // ==============================
   // SAVE PROFILE
   // ==============================
+  const uploadImage = async () => {
 
+  const formData = new FormData();
+  formData.append("photo", file);
+
+  const res = await axios.post(
+    BASE_URL + "/upload",
+    formData,
+    {
+      withCredentials: true,
+    }
+  );
+  console.log(res.data);
+
+  return res.data.photourl; 
+};
+
+
+
+
+ 
   const saveProfile = async () => {
 
     try {
-
+      
       setLoading(true);
       setError("");
       setSuccess("");
+
+
+       let imageUrl = photourl;
+
+    if (file) {
+      imageUrl = await uploadImage();
+      setPhotoUrl(imageUrl);
+        setPreviewImage(imageUrl);
+    }
+
+    console.log(imageUrl);
+    console.log("Gender being sent:", gender);
 
       const res = await axios.patch(
 
@@ -84,7 +122,7 @@ const EditProfile = ({ user }) => {
         {
           firstName,
           lastName,
-          photourl,
+          photourl: imageUrl,
           age,
           gender,
           about,
@@ -236,17 +274,18 @@ const EditProfile = ({ user }) => {
   <div className="avatar">
     <div className="w-32 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
 
-      <img
-        src={
-          photourl ||
-          "https://cdn-icons-png.flaticon.com/512/149/149071.png"
-        }
-        alt="Profile Preview"
-        onError={(e) => {
-          e.target.src =
-            "https://cdn-icons-png.flaticon.com/512/149/149071.png";
-        }}
-      />
+     <img
+  src={
+    previewImage ||
+    photourl ||
+    "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+  }
+  alt="Profile Preview"
+  onError={(e) => {
+    e.target.src =
+      "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+  }}
+/>
 
     </div>
   </div>
@@ -259,18 +298,30 @@ const EditProfile = ({ user }) => {
         Paste Image URL
       </span>
     </div>
-
+{/* 
     <input
       type="url"
       placeholder="https://example.com/profile.jpg"
       className="input input-bordered w-full"
       value={photourl}
       onChange={(e) => setPhoto(e.target.value)}
-    />
+    /> */}
+   <input
+  type="file"
+  onChange={(e) => {
+  const selectedFile = e.target.files[0];
 
+  if (selectedFile) {
+    setFile(selectedFile);
+
+    const preview = URL.createObjectURL(selectedFile);
+    setPreviewImage(preview);
+  }
+}}
+/>
     <div className="label">
       <span className="label-text-alt opacity-60">
-        The preview updates automatically.
+        
       </span>
     </div>
 
@@ -318,9 +369,9 @@ const EditProfile = ({ user }) => {
                 value={gender}
                 onChange={(e)=>setGender(e.target.value)}
               >
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="others">Others</option>
+                <option value="male">male</option>
+                <option value="female">female</option>
+                <option value="other">other</option>
               </select>
 
             </label>
@@ -586,7 +637,7 @@ const EditProfile = ({ user }) => {
             age,
             gender,
             about,
-            photourl,
+            photourl : previewImage || photourl,
             skills,
             location,
             education,

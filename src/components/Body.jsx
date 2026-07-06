@@ -66,13 +66,26 @@ useEffect(() => {
 //   }
 // }, []);
 
+  // return (
+  //   <div>
+  //     <NavBar />
+  //     <Outlet />
+  //     <Footer />
+  //   </div>
+  // );
   return (
-    <div>
-      <NavBar />
-      <Outlet />
-      <Footer />
+  <div className="min-h-screen flex flex-col bg-base-200">
+    <NavBar />
+
+    <div className="flex-1">
+      <main className="flex-1 px-4 py-8">
+    <Outlet />
+</main>
     </div>
-  );
+
+    <Footer />
+  </div>
+);
 };
 
 export default Body;

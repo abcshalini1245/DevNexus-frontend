@@ -322,7 +322,22 @@ const Requests = () => {
           return (
             <div
               key={requestId}
-              className="flex items-center justify-between w-2/4 bg-base-300 rounded-xl shadow-md p-5"
+               className="
+    w-[95%]
+    md:w-2/4
+    bg-base-300
+    rounded-xl
+    shadow-md
+    p-5
+    flex
+    flex-col
+    md:flex-row
+    items-center
+    md:items-center
+    text-center
+    md:text-left
+    gap-4
+  "
             >
               <div className="flex items-center gap-5">
                 <img
@@ -344,25 +359,27 @@ const Requests = () => {
                 </div>
               </div>
 
-              <div className="flex gap-2">
-                <button
-                  className="btn btn-success"
-                  onClick={() =>
-                    reviewRequest("accepted", requestId)
-                  }
-                >
-                  Accept
-                </button>
-
-                <button
-                  className="btn btn-error"
-                  onClick={() =>
+              <div className="card-actions flex flex-wrap justify-start gap-2">
+  <button
+    className="btn btn-error"
+       onClick={() =>
                     reviewRequest("rejected", requestId)
                   }
-                >
-                  Reject
-                </button>
-              </div>
+    
+  >
+    Reject
+  </button>
+
+  <button
+    className="btn btn-success"
+    // onClick={() => handleSendRequest("interested", _id)}
+      onClick={() =>
+                    reviewRequest("accepted", requestId)
+                  }
+  >
+    Accept
+  </button>
+</div>
             </div>
           );
         })}

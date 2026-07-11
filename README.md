@@ -123,7 +123,7 @@ The project focuses on clean UI, responsive design, authentication, and seamless
 
 ### 🔐 Login
 
-> Add login screenshot here
+
 ![alt text](image.png)
 
 ---

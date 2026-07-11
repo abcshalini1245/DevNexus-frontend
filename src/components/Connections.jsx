@@ -1,58 +1,20 @@
-// import axios from "axios";
-// import { BASE_URL } from "../utils/constants";
-// import { useEffect } from "react";
-// import { useDispatch } from "react-redux";
-// import { addConnections } from "../utils/connectionSlice";
-
-// const Connections = () => {
-//   const dispatch = useDispatch();
-//   const fetchConnections = async () => {
-//     try {
-//       const res = await axios.get(
-//         BASE_URL + "/user/connections",
-//         {
-//           withCredentials: true,
-//         }
-//       );
-
-//       console.log(res.data.data);
-//       dispatch(addConnections(res.data))
-//     } catch (err) {
-//       // Handle Error Case
-//       console.error(err);
-//     }
-//   };
-
-//   useEffect(() => {
-//     fetchConnections();
-//   }, []);
-
-//   return (
-//     <div className="flex justify-center my-10">
-//   <h1 className="text-2xl font-bold">Connections</h1>
-// </div>
-//   );
-// };
-
-// export default Connections;
-
-
 
 
 
 import SkeletonCard from "./SkeletonCard";
 
-
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnections } from "../utils/connectionSlice";
-import { Link } from "react-router-dom";
+
 
 
 const Connections = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const connections = useSelector((store) => store.connection);
 
   const fetchConnections = async () => {
@@ -146,11 +108,24 @@ const Connections = () => {
                 </p>
 
                 <p className="mt-1 line-clamp-2">{about}</p>
-              <Link to={`/profile/${_id}`}>
-  <button className="btn btn-primary mt-4 w-full md:w-fit">
-    View Profile
+              
+
+          <div className="flex gap-3 mt-4">
+
+  <Link to={`/profile/${_id}`}>
+    <button className="btn btn-primary">
+      View Profile
+    </button>
+  </Link>
+
+  <button
+    className="btn btn-secondary"
+    onClick={() => navigate(`/chat/${_id}`)}
+  >
+    Message
   </button>
-</Link>
+
+</div>
               </div>
             </div>
           );

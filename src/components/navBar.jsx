@@ -39,7 +39,7 @@ const navigate = useNavigate();
 
       {/* Right Side */}
       {user && (
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 ">
            {/* Theme Toggle */}
   <ThemeToggle />
           <p className="font-semibold">
@@ -66,7 +66,8 @@ const navigate = useNavigate();
 
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-1 w-52 rounded-box bg-base-100 p-2 shadow"
+              // className="menu menu-sm dropdown-content mt-3 z-1 w-52 rounded-box bg-base-50 p-2 text-black shadow"
+              className="menu menu-sm dropdown-content mt-3 z-1 w-52 rounded-box bg-base-100 p-2 text-base-content shadow"
             >
                 <li>
                 <Link to="/feed"> Feed</Link>

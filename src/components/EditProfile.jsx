@@ -239,28 +239,7 @@ setPreviewImage(user.photourl || "");
 
           </div>
 
-          {/* Photo */}
-
-          {/* <label className="form-control mt-4">
-
-            <div className="label">
-
-              <span className="label-text">
-                🖼 Profile Photo URL
-              </span>
-
-            </div>
-
-            <input
-              type="text"
-              className="input input-bordered"
-              placeholder="https://..."
-              value={photourl}
-              onChange={(e)=>setPhoto(e.target.value)}
-            />
-
-          </label> */}
-
+          
 
           {/* ================= Profile Photo ================= */}
 
@@ -298,14 +277,7 @@ setPreviewImage(user.photourl || "");
         Paste Image URL: 
       </span>
     </div>
-{/* 
-    <input
-      type="url"
-      placeholder="https://example.com/profile.jpg"
-      className="input input-bordered w-full"
-      value={photourl}
-      onChange={(e) => setPhoto(e.target.value)}
-    /> */}
+
    <input
   type="file"
   onChange={(e) => {
@@ -369,6 +341,7 @@ setPreviewImage(user.photourl || "");
                 value={gender}
                 onChange={(e)=>setGender(e.target.value)}
               >
+                <option value="gender">gender</option>
                 <option value="male">male</option>
                 <option value="female">female</option>
                 <option value="other">other</option>

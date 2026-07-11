@@ -34,16 +34,7 @@ const Body = () => {
     }
   };
 
-  // useEffect(() => {
-  //   // Don't call the API if the user is already in Redux
-  //   if (!userData && location.pathname !== "/login") {
-  //     fetchUser();
-  //   }
-  // }, [userData, location.pathname]);
-
-
-  
-
+ 
 
 useEffect(() => {
   const publicRoutes = [
@@ -60,19 +51,8 @@ useEffect(() => {
 }, [location.pathname]);
 
 
-//   useEffect(() => {
-//   if (!userData) {
-//     fetchUser();
-//   }
-// }, []);
 
-  // return (
-  //   <div>
-  //     <NavBar />
-  //     <Outlet />
-  //     <Footer />
-  //   </div>
-  // );
+
   return (
   <div className="min-h-screen flex flex-col bg-base-200">
     <NavBar />

@@ -13,6 +13,7 @@ import UserProfile from "./components/UserProfile";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import ChangePassword from "./components/ChangePassword";
+import Chat from "./pages/Chat";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
   <Route path="/" element={<Body />}>
     <Route path="feed" element={<Feed />} />
     <Route path="profile" element={<Profile />} />
+    <Route path="/chat/:targetUserId" element={<Chat />} />
     <Route path="user/connections" element={<Connections />} />
     <Route
       path="user/requests/recieved"

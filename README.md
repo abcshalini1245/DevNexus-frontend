@@ -130,35 +130,34 @@ The project focuses on clean UI, responsive design, authentication, and seamless
 
 ### 🏠 Developer Feed
 
-> Add feed screenshot here
+
 ![alt text](image-1.png)
 
 ---
 
 ### 👤 Edit Profile
 
-> Add profile screenshot here
 ![alt text](image-2.png)
 
 ---
 
 ### 🤝 Connections
 
-> Add connections screenshot here
+
 ![alt text](image-3.png)
 
 ---
 
 ### 📨 Connection Requests
 
-> Add request screenshot here
+
 ![alt text](image-4.png)
 
 ---
 
 ### 💬 Chat
 
-> Add chat screenshot here
+
 ![alt text](image-5.png)
 
 ---

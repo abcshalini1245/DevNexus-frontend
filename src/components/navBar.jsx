@@ -34,7 +34,7 @@ const navigate = useNavigate();
     <div className="navbar bg-blue-900 shadow-sm px-5 text-neutral-content">
       {/* Logo */}
       <div className="flex-1">
-        <Link to="/" className="btn btn-ghost text-2xl font-bold">DevLink</Link>
+        <Link to="/" className="btn btn-ghost text-2xl font-bold">DevNexus</Link>
       </div>
 
       {/* Right Side */}
